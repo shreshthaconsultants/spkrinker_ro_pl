@@ -1,0 +1,14 @@
+C:\Users\shres\Desktop\R1.0\plugin\obj\Release\SprinklerPlugin.csproj.AssemblyReference.cache
+C:\Users\shres\Desktop\R1.0\plugin\obj\Release\SprinklerPlugin.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\shres\Desktop\R1.0\plugin\obj\Release\SprinklerPlugin.AssemblyInfoInputs.cache
+C:\Users\shres\Desktop\R1.0\plugin\obj\Release\SprinklerPlugin.AssemblyInfo.cs
+C:\Users\shres\Desktop\R1.0\plugin\obj\Release\SprinklerPlugin.csproj.CoreCompileInputs.cache
+C:\Users\shres\Desktop\R1.0\plugin\bin\Release\SprinklerPlugin.dll
+C:\Users\shres\Desktop\R1.0\plugin\bin\Release\SprinklerPlugin.pdb
+C:\Users\shres\Desktop\R1.0\plugin\bin\Release\Newtonsoft.Json.dll
+C:\Users\shres\Desktop\R1.0\plugin\obj\Release\Sprinkle.E5947674.Up2Date
+C:\Users\shres\Desktop\R1.0\plugin\obj\Release\SprinklerPlugin.dll
+C:\Users\shres\Desktop\R1.0\plugin\obj\Release\SprinklerPlugin.pdb
+C:\Users\shres\Desktop\R1.0\plugin\bin\Staging\SprinklerPlugin.dll
+C:\Users\shres\Desktop\R1.0\plugin\bin\Staging\SprinklerPlugin.pdb
+C:\Users\shres\Desktop\R1.0\plugin\bin\Staging\Newtonsoft.Json.dll

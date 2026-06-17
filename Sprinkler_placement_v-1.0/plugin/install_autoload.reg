@@ -1,0 +1,25 @@
+Windows Registry Editor Version 5.00
+
+; ============================================================
+;  SprinklerPlugin - Auto-load registration for ZWCAD
+; ============================================================
+;
+;  HOW TO USE:
+;  1. Edit the LOADER path below to match where YOUR DLL lives
+;     (use double backslashes \\ in the path)
+;  2. Save this file
+;  3. Double-click it to install
+;  4. Click "Yes" when Windows asks to merge into registry
+;  5. Restart ZWCAD - your plugin auto-loads
+;
+;  NOTE: The path below assumes ZWCAD 2025. If you have a different
+;  version, change "ZWCAD\\2025" to your version (e.g. "ZWCAD\\2024").
+;
+;  TO UNINSTALL: Run uninstall_autoload.reg or delete the key manually.
+; ============================================================
+
+[HKEY_CURRENT_USER\Software\ZWSOFT\ZWCAD\2026\en-US\Applications\SprinklerPlugin]
+"DESCRIPTION"="Sprinkler Design Plugin"
+"LOADCTRLS"=dword:00000002
+"LOADER"="C:\\Users\\shres\\OneDrive\\Desktop\\files (3)\\plugin\\bin\\Debug\\SprinklerPlugin.dll"
+"MANAGED"=dword:00000001

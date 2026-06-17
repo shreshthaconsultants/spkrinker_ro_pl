@@ -1,0 +1,30 @@
+C:\Users\shres\OneDrive\Desktop\files (3)\plugin\bin\Debug\SprinklerPlugin.dll
+C:\Users\shres\OneDrive\Desktop\files (3)\plugin\bin\Debug\SprinklerPlugin.pdb
+C:\Users\shres\OneDrive\Desktop\files (3)\plugin\obj\x64\Debug\SprinklerPlugin.csproj.AssemblyReference.cache
+C:\Users\shres\OneDrive\Desktop\files (3)\plugin\obj\x64\Debug\SprinklerPlugin.csproj.CoreCompileInputs.cache
+C:\Users\shres\OneDrive\Desktop\files (3)\plugin\obj\x64\Debug\SprinklerPlugin.dll
+C:\Users\shres\OneDrive\Desktop\files (3)\plugin\obj\x64\Debug\SprinklerPlugin.pdb
+C:\Users\shres\OneDrive\Desktop\Sprinkler_placement_v-1.0\plugin\obj\x64\Debug\SprinklerPlugin.csproj.AssemblyReference.cache
+C:\Users\shres\OneDrive\Desktop\Sprinkler_placement_v-1.0\plugin\obj\x64\Debug\SprinklerPlugin.csproj.CoreCompileInputs.cache
+C:\Users\shres\OneDrive\Desktop\Sprinkler_placement_v-1.0\plugin\obj\x64\Debug\SprinklerPlugin.dll
+C:\Users\shres\OneDrive\Desktop\Sprinkler_placement_v-1.0\plugin\obj\x64\Debug\SprinklerPlugin.pdb
+C:\Users\shres\OneDrive\Desktop\Sprinkler_placement_v-1.0\plugin\bin\Debug\SprinklerPlugin.dll
+C:\Users\shres\OneDrive\Desktop\Sprinkler_placement_v-1.0\plugin\bin\Debug\SprinklerPlugin.pdb
+D:\orbit\Finalx\Cadeli\Tools\Sprinkler_placement_v-1.0\plugin\bin\Debug\SprinklerPlugin.dll
+D:\orbit\Finalx\Cadeli\Tools\Sprinkler_placement_v-1.0\plugin\bin\Debug\SprinklerPlugin.pdb
+D:\orbit\Finalx\Cadeli\Tools\Sprinkler_placement_v-1.0\plugin\obj\x64\Debug\SprinklerPlugin.csproj.AssemblyReference.cache
+D:\orbit\Finalx\Cadeli\Tools\Sprinkler_placement_v-1.0\plugin\obj\x64\Debug\SprinklerPlugin.csproj.CoreCompileInputs.cache
+D:\orbit\Finalx\Cadeli\Tools\Sprinkler_placement_v-1.0\plugin\obj\x64\Debug\SprinklerPlugin.dll
+D:\orbit\Finalx\Cadeli\Tools\Sprinkler_placement_v-1.0\plugin\obj\x64\Debug\SprinklerPlugin.pdb
+C:\Users\shres\OneDrive\Desktop\newver\Sprinkler_placement_v-1.0\plugin\bin\Debug\SprinklerPlugin.dll
+C:\Users\shres\OneDrive\Desktop\newver\Sprinkler_placement_v-1.0\plugin\bin\Debug\SprinklerPlugin.pdb
+C:\Users\shres\OneDrive\Desktop\newver\Sprinkler_placement_v-1.0\plugin\obj\x64\Debug\SprinklerPlugin.csproj.AssemblyReference.cache
+C:\Users\shres\OneDrive\Desktop\newver\Sprinkler_placement_v-1.0\plugin\obj\x64\Debug\SprinklerPlugin.csproj.CoreCompileInputs.cache
+C:\Users\shres\OneDrive\Desktop\newver\Sprinkler_placement_v-1.0\plugin\obj\x64\Debug\SprinklerPlugin.dll
+C:\Users\shres\OneDrive\Desktop\newver\Sprinkler_placement_v-1.0\plugin\obj\x64\Debug\SprinklerPlugin.pdb
+C:\Users\shres\Desktop\Sprinkler_full_code\Sprinkler_placement_v-1.0\plugin\bin\Debug\SprinklerPlugin.dll
+C:\Users\shres\Desktop\Sprinkler_full_code\Sprinkler_placement_v-1.0\plugin\bin\Debug\SprinklerPlugin.pdb
+C:\Users\shres\Desktop\Sprinkler_full_code\Sprinkler_placement_v-1.0\plugin\obj\x64\Debug\SprinklerPlugin.csproj.AssemblyReference.cache
+C:\Users\shres\Desktop\Sprinkler_full_code\Sprinkler_placement_v-1.0\plugin\obj\x64\Debug\SprinklerPlugin.csproj.CoreCompileInputs.cache
+C:\Users\shres\Desktop\Sprinkler_full_code\Sprinkler_placement_v-1.0\plugin\obj\x64\Debug\SprinklerPlugin.dll
+C:\Users\shres\Desktop\Sprinkler_full_code\Sprinkler_placement_v-1.0\plugin\obj\x64\Debug\SprinklerPlugin.pdb

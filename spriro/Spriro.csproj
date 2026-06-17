@@ -1,0 +1,61 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    spriro - one ZWCAD 2026 plugin that merges all three engines:
+      Spriro.P1       (v-1.0 plugin sources, namespace re-homed)
+      Spriro.P2       (v-2.0 plugin sources)
+      Spriro.Routing  (R1.0 plugin sources, incl. Joint/)
+    Only Spriro.SpriroCommands is registered (see SpriroCommands.cs), exposing
+    exactly three commands: -routing, -sprinkler_p1, -sprinkler_p2.
+
+    Build:   dotnet build Spriro.csproj -c Release
+    Output:  bin\Release\Spriro.dll  (+ Newtonsoft.Json.dll - keep them together)
+  -->
+
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>8.0</LangVersion>
+    <AssemblyName>Spriro</AssemblyName>
+    <RootNamespace>Spriro</RootNamespace>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <Deterministic>true</Deterministic>
+    <!-- ZWCAD 2026 is 64-bit; AnyCPU loads fine in a 64-bit host. -->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Lets `dotnet build` target net48 without Visual Studio targeting packs. -->
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+    <!-- R1.0 client uses Newtonsoft; same version ZWCAD 2026 ships, so NETLOAD binds cleanly. -->
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- BCL framework assemblies not referenced by default in SDK-style projects. -->
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web.Extensions" />   <!-- JavaScriptSerializer (v1/v2 ApiClient) -->
+    <Reference Include="System.Windows.Forms" />    <!-- ProgressDialog / SummaryDialog (v1/v2) -->
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- ZWCAD loads these at runtime; never copy them next to the plugin.
+         Edit the two HintPaths if your ZWCAD lives elsewhere. -->
+    <Reference Include="ZwManaged">
+      <HintPath>C:\Program Files\ZWSOFT\ZWCAD 2026\ZwManaged.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="ZwDatabaseMgd">
+      <HintPath>C:\Program Files\ZWSOFT\ZWCAD 2026\ZwDatabaseMgd.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Ship the editable backend-address config next to Spriro.dll. -->
+    <None Update="spriro.config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

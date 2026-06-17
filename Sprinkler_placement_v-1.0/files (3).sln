@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SprinklerPlugin", "SprinklerPlugin.csproj", "{C869F8E5-77CF-8735-6562-02C28645953A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C869F8E5-77CF-8735-6562-02C28645953A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C869F8E5-77CF-8735-6562-02C28645953A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C869F8E5-77CF-8735-6562-02C28645953A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C869F8E5-77CF-8735-6562-02C28645953A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {46CFEDD4-B7A0-4372-BF56-AF52FEB39E65}
+	EndGlobalSection
+EndGlobal

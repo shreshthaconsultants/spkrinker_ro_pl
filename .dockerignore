@@ -1,0 +1,22 @@
+# Keep the build context tiny: the image only needs backend_run.py,
+# requirements.docker.txt and the three backend/ folders.
+
+.git/
+.claude/
+**/__pycache__/
+**/*.pyc
+**/.pytest_cache/
+
+# Windows ZWCAD plugin projects (not used by the backend image)
+spriro/
+**/plugin/
+Sprinkler_placement_v-1.0/checkpoints/
+
+# Build artifacts / IDE
+**/bin/
+**/obj/
+**/.vs/
+**/*.dll
+**/*.pdb
+**/*.sln
+**/*.slnx

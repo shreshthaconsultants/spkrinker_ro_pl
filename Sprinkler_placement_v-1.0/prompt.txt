@@ -1,0 +1,15 @@
+listen my logic 
+alpha :
+    it means if the sprinkler[mid] to wall distance is >= the 1850 so on the last 
+    3 grid add value x which formula is 
+    x = (sprinkler[mid] to wall_distance - 1500)/3
+    this is the first logic alpha after implement the logic in the zwcad terminal print use alpha formula
+
+gama:
+    this is the second logic if the sprinkler[mid] to wall_distance <=1850 to 2600 so it squeeze the last 3 sprinkler
+    so place a new sprinkler under the wall_line aroung 1000 and squees the last 3 sprinkler by the value of the y, here is 
+    how the y value is calcluate
+    y = (sprinkler[mid] to wall wall_distance - 1000)/3
+    so after calculate the y value squeeze the last 3 sprinkler[in this three new sprinkler is not include]
+
+do not calculate it many time like if a rectangle you did on the first row and first column and then folow the grid if there is the unique architectur so you as much you can 

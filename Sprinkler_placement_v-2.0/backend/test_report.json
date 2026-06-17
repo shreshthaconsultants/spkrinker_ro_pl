@@ -1,0 +1,46 @@
+{
+  "total_heads": 32,
+  "all_passed": true,
+  "room_count": 2,
+  "flagged_rooms": [],
+  "rooms": [
+    {
+      "room_index": 0,
+      "hazard": "light",
+      "head_count": 9,
+      "pruned_from": 16,
+      "converged": true,
+      "ga_used": false,
+      "report": {
+        "room_index": 0,
+        "hazard": "light",
+        "head_count": 9,
+        "coverage_pct": 100.0,
+        "floor_area_m2": 120.0,
+        "passed": true,
+        "error_count": 0,
+        "warning_count": 0,
+        "violations": []
+      }
+    },
+    {
+      "room_index": 1,
+      "hazard": "storage",
+      "head_count": 23,
+      "pruned_from": 36,
+      "converged": true,
+      "ga_used": false,
+      "report": {
+        "room_index": 1,
+        "hazard": "storage",
+        "head_count": 23,
+        "coverage_pct": 100.0,
+        "floor_area_m2": 210.0,
+        "passed": true,
+        "error_count": 0,
+        "warning_count": 0,
+        "violations": []
+      }
+    }
+  ]
+}

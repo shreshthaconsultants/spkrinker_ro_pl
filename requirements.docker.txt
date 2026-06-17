@@ -1,0 +1,15 @@
+# Single dependency set for the backend container.
+#
+# The three backends pin CONFLICTING versions in their own requirements.txt
+# (v1/v2 want fastapi 0.135 / pydantic 2.12 / uvicorn 0.42; R1.0 wants
+# fastapi 0.115 / pydantic 2.10 / uvicorn 0.34), so they cannot be pip-installed
+# together. These are the versions proven to run all three at once in the dev
+# environment, so the container behaves exactly like local.
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+pydantic==2.10.4
+python-multipart==0.0.22
+ezdxf==1.1.0
+numpy==2.4.3
+scipy==1.17.1
+shapely==2.0.6

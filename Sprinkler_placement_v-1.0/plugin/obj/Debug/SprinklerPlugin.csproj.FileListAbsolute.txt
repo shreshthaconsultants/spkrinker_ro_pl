@@ -1,0 +1,6 @@
+C:\Users\shres\OneDrive\Desktop\files (3)\plugin\obj\Debug\SprinklerPlugin.csproj.AssemblyReference.cache
+C:\Users\shres\OneDrive\Desktop\files (3)\plugin\obj\Debug\SprinklerPlugin.csproj.CoreCompileInputs.cache
+C:\Users\shres\OneDrive\Desktop\files (3)\plugin\bin\Debug\SprinklerPlugin.dll
+C:\Users\shres\OneDrive\Desktop\files (3)\plugin\bin\Debug\SprinklerPlugin.pdb
+C:\Users\shres\OneDrive\Desktop\files (3)\plugin\obj\Debug\SprinklerPlugin.dll
+C:\Users\shres\OneDrive\Desktop\files (3)\plugin\obj\Debug\SprinklerPlugin.pdb

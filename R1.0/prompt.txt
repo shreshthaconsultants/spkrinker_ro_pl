@@ -1,0 +1,72 @@
+Build a sprinkler design automation system with two parts:
+
+1. A Python FastAPI backend that does all computation (placement, NFPA-13 
+   validation, pipe routing).
+2. A C# ZWCAD plugin that reads geometry from the drawing, calls the backend, 
+   and draws the results back into ZWCAD.
+
+== REGULAR WORKFLOW (how it works each run) ==
+1. User selects a room boundary (closed polyline) in ZWCAD and runs the plugin command.
+2. C# plugin extracts the boundary vertices + chosen hazard class, sends them as 
+   JSON to the FastAPI backend.
+3. Backend computes sprinkler positions, validates them, computes pipe routing, 
+   returns JSON.
+4. C# plugin reads the JSON and draws: sprinkler blocks, coverage circles, and 
+   pipe polylines on separate layers.
+
+== BACKEND (Python / FastAPI) ==
+Endpoints:
+- POST /place    -> input: boundary polygon (list of [x,y] in mm) + hazard class. 
+                    Output: list of sprinkler points [x,y].
+- POST /validate -> input: sprinkler points + boundary + hazard. 
+                    Output: pass/fail per rule + list of failing heads.
+- POST /route    -> input: sprinkler points + riser point (optional). 
+                    Output: branch lines + cross main + riser connection as polylines.
+
+Placement algorithm (rectangular grid + edge handling):
+- spacing S = min(max_spacing[hazard], sqrt(max_area[hazard]))
+- generate grid points over the boundary bounding box, step S, with S/2 margin
+- keep only points inside the boundary offset inward by S/2 (use shapely)
+- edge pass: walk the inset boundary, add points every S to fill gaps
+- prune any pair of heads closer than 1800 mm
+
+NFPA-13 rules (all mm), keyed by hazard class:
+- Light:    max_area=20_900_000, max_spacing=4600
+- Ordinary: max_area=12_100_000, max_spacing=4600
+- Extra:    max_area=9_300_000,  max_spacing=3700
+- min spacing between heads: 1800
+- max wall distance: S/2 ; min wall distance: 100
+- coverage draw radius per head: 0.707 * S (single-head max reach ~2300mm)
+- validation checks: area<=max, S<=max_spacing, gap>=1800, wall_dist<=S/2 & >=100, 
+  full coverage (no gaps in boundary).
+
+Routing algorithm (structured tree, NOT MST):
+- cluster heads into rows (group by Y, tolerance S/2) -> each row = a branch line
+- sort each branch by X, connect with a polyline
+- place a cross main along one edge, tee each branch into it
+- connect cross main to riser point (shortest path)
+- output every segment with its length.
+
+Use shapely for geometry. Return clean JSON. Add input validation and clear errors.
+
+== PLUGIN (C# / ZWCAD .NET API) ==
+- Register a command (e.g. SPKAUTO).
+- Prompt user to select a closed polyline boundary and pick hazard class.
+- Extract vertices to [x,y] mm list.
+- HTTP POST to the FastAPI backend (use HttpClient, async).
+- Parse the returned JSON.
+- Draw on separate layers:
+    - "SPK-HEADS"   -> sprinkler block at each point
+    - "SPK-COVER"   -> coverage circle (radius from backend) per head
+    - "SPK-PIPE"    -> branch + main polylines
+- Color failing heads (from /validate) red on a "SPK-FAIL" layer.
+- Wrap the whole thing in a transaction; handle network errors gracefully.
+
+== DELIVERABLES ==
+- backend/  (FastAPI app, requirements.txt, runnable with uvicorn)
+- plugin/   (C# project, references ZWCAD .NET dlls, builds a .dll/.zrx loadable in ZWCAD)
+- A shared JSON schema doc describing the request/response for each endpoint.
+- A README with run/build/load instructions for both parts.
+
+Start by scaffolding both projects and the JSON contract, then implement 
+/place first and confirm it works end to end before adding /validate and /route.

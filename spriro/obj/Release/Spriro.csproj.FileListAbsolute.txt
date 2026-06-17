@@ -1,0 +1,12 @@
+C:\Users\shres\Desktop\Sprinkler_full_code\spriro\obj\Release\Spriro.csproj.AssemblyReference.cache
+C:\Users\shres\Desktop\Sprinkler_full_code\spriro\obj\Release\Spriro.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\shres\Desktop\Sprinkler_full_code\spriro\obj\Release\Spriro.AssemblyInfoInputs.cache
+C:\Users\shres\Desktop\Sprinkler_full_code\spriro\obj\Release\Spriro.AssemblyInfo.cs
+C:\Users\shres\Desktop\Sprinkler_full_code\spriro\obj\Release\Spriro.csproj.CoreCompileInputs.cache
+C:\Users\shres\Desktop\Sprinkler_full_code\spriro\bin\Release\Spriro.dll
+C:\Users\shres\Desktop\Sprinkler_full_code\spriro\bin\Release\Spriro.pdb
+C:\Users\shres\Desktop\Sprinkler_full_code\spriro\bin\Release\Newtonsoft.Json.dll
+C:\Users\shres\Desktop\Sprinkler_full_code\spriro\obj\Release\Spriro.csproj.Up2Date
+C:\Users\shres\Desktop\Sprinkler_full_code\spriro\obj\Release\Spriro.dll
+C:\Users\shres\Desktop\Sprinkler_full_code\spriro\obj\Release\Spriro.pdb
+C:\Users\shres\Desktop\Sprinkler_full_code\spriro\bin\Release\spriro.config.json

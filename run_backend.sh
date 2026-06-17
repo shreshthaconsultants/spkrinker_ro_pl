@@ -3,9 +3,9 @@
 # run_backend.sh - build and (re)launch the Sprinkler backend container on a
 # Linux VPS, always-on. One container serves all three backends:
 #
-#   routing (R1.0)  http://<vps-ip>:9000/health      <- plugin  -routing
-#   v1              http://<vps-ip>:9001/api/health  <- plugin  -sprinkler_p1
-#   v2              http://<vps-ip>:9002/api/health  <- plugin  -sprinkler_p2
+#   routing (R1.0)  http://<vps-ip>:9000/health      <- plugin  /routing
+#   v1              http://<vps-ip>:9001/api/health  <- plugin  /sprinkler_p1
+#   v2              http://<vps-ip>:9002/api/health  <- plugin  /sprinkler_p2
 #
 # "--restart always" keeps it running across crashes and VPS reboots.
 # Run from the repo root:   ./run_backend.sh
@@ -47,9 +47,9 @@ docker run -d \
 
 echo
 echo ">> up. endpoints (replace <vps-ip> with the server address):"
-echo "     routing       http://<vps-ip>:${P_ROUTING}/health        (-routing)"
-echo "     sprinkler_p1  http://<vps-ip>:${P1}/api/health       (-sprinkler_p1)"
-echo "     sprinkler_p2  http://<vps-ip>:${P2}/api/health       (-sprinkler_p2)"
+echo "     routing       http://<vps-ip>:${P_ROUTING}/health        (/routing)"
+echo "     sprinkler_p1  http://<vps-ip>:${P1}/api/health       (/sprinkler_p1)"
+echo "     sprinkler_p2  http://<vps-ip>:${P2}/api/health       (/sprinkler_p2)"
 echo
 echo ">> follow logs:   docker logs -f $NAME"
 echo ">> status:        docker ps --filter name=$NAME"

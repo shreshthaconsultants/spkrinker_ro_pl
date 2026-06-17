@@ -15,9 +15,9 @@ collide if imported into a single interpreter.
 
 These line up with the `spriro` ZWCAD plugin commands:
 
-    -sprinkler_p1  ->  v1       (http://127.0.0.1:9001)
-    -sprinkler_p2  ->  v2       (http://127.0.0.1:9002)
-    -routing       ->  routing  (http://127.0.0.1:9000)
+    /sprinkler_p1  ->  v1       (http://127.0.0.1:9001)
+    /sprinkler_p2  ->  v2       (http://127.0.0.1:9002)
+    /routing       ->  routing  (http://127.0.0.1:9000)
 
 Usage
 -----
@@ -238,7 +238,7 @@ def _shutdown(selected: list[Backend], initiated_by_us: bool) -> None:
 # --------------------------------------------------------------------------
 
 def _print_table(selected: list[Backend], host: str) -> None:
-    cmd_for = {"v1": "-sprinkler_p1", "v2": "-sprinkler_p2", "routing": "-routing"}
+    cmd_for = {"v1": "/sprinkler_p1", "v2": "/sprinkler_p2", "routing": "/routing"}
     print()
     print("  Sprinkler backends")
     print("  " + "-" * 68)

@@ -7,12 +7,12 @@ engines now live in their own namespaces inside one DLL.
 
 | Command          | Engine            | Talks to backend | What it does |
 |------------------|-------------------|------------------|--------------|
-| `-routing`       | R1.0 (`Spriro.Routing`) | **:9000** `/route*` | Route **existing** sprinklers into a pipe network (Rooms = rooms + corridor header, Open = one open space). |
-| `-sprinkler_p1`  | v-1.0 (`Spriro.P1`)     | **:9001** `/api/zwcad/scenarios` | Place sprinklers with the **scenario picker** (pick one of 3 grid layouts). |
-| `-sprinkler_p2`  | v-2.0 (`Spriro.P2`)     | **:9002** `/api/zwcad/auto` | Place sprinklers with the **universal model** (classify → place → verify → autofix → minimise → GA), one compliant layout + validation report. |
+| `/routing`       | R1.0 (`Spriro.Routing`) | **:9000** `/route*` | Route **existing** sprinklers into a pipe network (Rooms = rooms + corridor header, Open = one open space). |
+| `/sprinkler_p1`  | v-1.0 (`Spriro.P1`)     | **:9001** `/api/zwcad/scenarios` | Place sprinklers with the **scenario picker** (pick one of 3 grid layouts). |
+| `/sprinkler_p2`  | v-2.0 (`Spriro.P2`)     | **:9002** `/api/zwcad/auto` | Place sprinklers with the **universal model** (classify → place → verify → autofix → minimise → GA), one compliant layout + validation report. |
 
 > The three commands are typed **exactly** as shown, including the leading
-> hyphen and the underscores: `-routing`, `-sprinkler_p1`, `-sprinkler_p2`.
+> slash and the underscores: `/routing`, `/sprinkler_p1`, `/sprinkler_p2`.
 
 ---
 
@@ -56,9 +56,9 @@ python backend_run.py
 
 ```
   key      plugin cmd      url                     health
-  v1       -sprinkler_p1   http://127.0.0.1:9001   /api/health
-  v2       -sprinkler_p2   http://127.0.0.1:9002   /api/health
-  routing  -routing        http://127.0.0.1:9000   /health
+  v1       /sprinkler_p1   http://127.0.0.1:9001   /api/health
+  v2       /sprinkler_p2   http://127.0.0.1:9002   /api/health
+  routing  /routing        http://127.0.0.1:9000   /health
 ```
 
 Each backend runs as its own uvicorn subprocess (they share module names like
@@ -98,7 +98,7 @@ the two files together when you copy the plugin anywhere.
 1. Start the backends (step 1) and ZWCAD 2026.
 2. `NETLOAD` → `spriro\bin\Release\Spriro.dll`. On load it prints the three
    commands.
-3. Type `-routing`, `-sprinkler_p1`, or `-sprinkler_p2`.
+3. Type `/routing`, `/sprinkler_p1`, or `/sprinkler_p2`.
 
 ---
 
@@ -109,17 +109,17 @@ original per-version flow:
 
 | Command          | Calls                                   | Original command it replaces |
 |------------------|-----------------------------------------|------------------------------|
-| `-routing`       | `Spriro.Routing.Commands.SpkRoute()`    | R1.0 `SPKROUTE` |
-| `-sprinkler_p1`  | `Spriro.P1.Commands.AutoSprinkler()`    | v1 `/AUTO-SPRINKLER` |
-| `-sprinkler_p2`  | `Spriro.P2.Commands.AutoSprinkler2()`   | v2 `AUTOSPRINKLER2` |
+| `/routing`       | `Spriro.Routing.Commands.SpkRoute()`    | R1.0 `SPKROUTE` |
+| `/sprinkler_p1`  | `Spriro.P1.Commands.AutoSprinkler()`    | v1 `/AUTO-SPRINKLER` |
+| `/sprinkler_p2`  | `Spriro.P2.Commands.AutoSprinkler2()`   | v2 `AUTOSPRINKLER2` |
 
 If you want different behaviour, change the one line in `SpriroCommands.cs`:
 
-- `-routing` routes sprinklers that **already exist** in the drawing. For full
+- `/routing` routes sprinklers that **already exist** in the drawing. For full
   design from a boundary (place + validate + route), call
   `Spriro.Routing.Commands.SpkAuto()` instead.
-- `-sprinkler_p2` runs v2's universal one-shot. For v2's scenario picker
-  (same UX as `-sprinkler_p1`, but the v2 backend), call
+- `/sprinkler_p2` runs v2's universal one-shot. For v2's scenario picker
+  (same UX as `/sprinkler_p1`, but the v2 backend), call
   `Spriro.P2.Commands.AutoSprinkler()` instead.
 
 ## How the merge works (for maintainers)
@@ -143,8 +143,7 @@ then remove any `[assembly: …]` lines from its `Commands.cs`.
 
 ## Note on the command names
 
-`-routing`, `-sprinkler_p1`, `-sprinkler_p2` are registered verbatim. A leading
-hyphen on a **custom** command is unusual (AutoCAD/ZWCAD use it for the no-dialog
-form of built-ins). It should register fine, but if your ZWCAD build rejects it
-at NETLOAD, rename the three `[CommandMethod("…")]` strings in
-`SpriroCommands.cs` to non-hyphen names (e.g. `SPRIRO_ROUTING`) and rebuild.
+`/routing`, `/sprinkler_p1`, `/sprinkler_p2` use a **leading slash** — the same
+convention as the v1 plugin's `/AUTO-SPRINKLER`, which ZWCAD registers cleanly.
+If you ever want different names, change the three `[CommandMethod("…")]`
+strings in `SpriroCommands.cs` and rebuild.

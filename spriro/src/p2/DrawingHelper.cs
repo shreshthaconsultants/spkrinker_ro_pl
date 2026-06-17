@@ -202,17 +202,15 @@ namespace Spriro.P2
 
         // ── Build the PP-CEILING PENDANT block from simple primitives ──────
         //
-        // Pendent head seen from below, proportioned exactly like the user's
-        // reference image where the OUTERMOST circle is the 1500 mm coverage
-        // circle:
-        //   * coverage circle r=1500 (off-white, SPRINKLER COVERAGE layer)
-        //   * rim edge r=1380 + inner ring r=1020 (off-white)
-        //   * gear-toothed deflector r=440..540 (14 teeth) + centre hole
-        //     r=60, yellow
+        // Geometry is transcribed 1:1 from the reference drawing myblock.dxf:
+        // a gear/sunburst deflector (ring r≈37.5 with 8 spokes), the central
+        // frame bars and centre circles on layer PENDENT SPRINKLER, plus the
+        // 1500 mm coverage circle on layer SPRINKLER COVERAGE. The entity list
+        // lives in DrawHeadSymbol. No external DXF is needed at runtime.
         // The definition carries a version tag in its Comments; when the
         // design changes the old definition is wiped and rebuilt in place,
         // so already-open drawings update on regen.
-        private const string BlockVersion = "CADELI-HEAD v8";
+        private const string BlockVersion = "PP-PENDANT myblock v1";
 
         public static ObjectId EnsureBlockBuilt(Database db)
         {
@@ -254,11 +252,11 @@ namespace Spriro.P2
                     tr.AddNewlyCreatedDBObject(btr, true);
                 }
 
-                EnsureLayer(tr, db, PendentLayer,  2);     // yellow
-                EnsureLayer(tr, db, CoverageLayer, 254);   // off-white
+                EnsureLayer(tr, db, PendentLayer,  1);     // red (matches reference block)
+                EnsureLayer(tr, db, CoverageLayer, 23);    // (matches reference block)
 
-                DrawHeadSymbol(tr, btr, 0, 0, 1.0, null);             // head graphic
-                AddCircle(tr, btr, 0, 0, 1500.0, CoverageLayer, 254); // coverage (outermost)
+                DrawHeadSymbol(tr, btr, 0, 0, 1.0, null);                     // head graphic
+                AddCircleBL(tr, btr, 0, 0, 1500.0, 0, 0, 1.0, CoverageLayer); // coverage circle (ByLayer)
                 btr.Comments = BlockVersion;
 
                 tr.Commit();
@@ -337,18 +335,53 @@ namespace Spriro.P2
             if (created != null) created.Add(bid);
         }
 
-        // Draw the head graphic (off-white rim + rings, yellow gear deflector
-        // + centre hole) into `owner` at (cx, cy), scaled. Used both by the
-        // block definition (origin, scale 1) and as the small illustration
-        // inside the info box. Ids are tracked in `created` when non-null.
+        // Draw the head graphic into `owner` at (cx, cy), scaled by `scale`.
+        // The 37 entities below are transcribed 1:1 from the reference block
+        // PP-CEILING PENDANT in myblock.dxf (gear/sunburst deflector + frame
+        // bars + centre circles), all ByLayer on PENDENT SPRINKLER. cx/cy/s
+        // let the same symbol be re-used at any position/scale.
         public static void DrawHeadSymbol(
             Transaction tr, BlockTableRecord owner,
             double cx, double cy, double scale, List<ObjectId> created)
         {
-            Track(created, AddCircleRgb(tr, owner, cx, cy, 1020.0 * scale, 109, 111, 114));  // single ring — grey RGB(109,111,114), thin
-            Track(created, AddGear(tr, owner, cx, cy, 540.0 * scale, 440.0 * scale, 14, 2)); // gear        — yellow
-            Track(created, AddCircle(tr, owner, cx, cy, 60.0 * scale, PendentLayer, 2));     // centre hole — yellow
-            Track(created, AddCircle(tr, owner, cx, cy, 10.0 * scale, PendentLayer, 2));     // centre dot  — yellow
+            double s = scale;
+            AddLine(tr, owner, -0.6453,-23.9610, 2.3355,-37.4272, cx,cy,s);
+            AddLine(tr, owner, -1.5200,-23.9214, -4.4666,-37.2330, cx,cy,s);
+            AddLine(tr, owner, 16.5951,-17.2959, 28.2136,-24.7031, cx,cy,s);
+            AddLine(tr, owner, 15.8201,-18.0075, 23.1485,-29.5025, cx,cy,s);
+            AddLine(tr, owner, 23.9355,-0.1252, 37.3913,2.8533, cx,cy,s);
+            AddLine(tr, owner, 23.9355,-1.2787, 37.2609,-4.2283, cx,cy,s);
+            AddLine(tr, owner, 16.7755,17.1606, 24.1336,28.7023, cx,cy,s);
+            AddLine(tr, owner, 17.5912,16.3450, 29.0841,23.6720, cx,cy,s);
+            AddLine(tr, owner, -0.4317,23.9658, -3.3936,37.3461, cx,cy,s);
+            AddLine(tr, owner, 0.5641,23.9630, 3.5238,37.3341, cx,cy,s);
+            AddArc(tr, owner, -0.0000,0.0000, 37.5000, 3.2184,3.8157, cx,cy,s);
+            AddArc(tr, owner, -0.0000,0.0000, 37.5000, 3.9937,4.5930, cx,cy,s);
+            AddArc(tr, owner, -0.0000,0.0000, 37.5000, 4.7747,5.3777, cx,cy,s);
+            AddArc(tr, owner, -0.0000,0.0000, 37.5000, 5.5640,6.1702, cx,cy,s);
+            AddArc(tr, owner, -0.0000,0.0000, 37.5000, 0.0762,0.6832, cx,cy,s);
+            AddArc(tr, owner, -0.0000,0.0000, 37.5000, 0.8717,1.4767, cx,cy,s);
+            AddArc(tr, owner, 0.0000,23.3551, 1.5886, 0.3661,2.7755, cx,cy,s);
+            AddArc(tr, owner, 0.0000,-23.3552, 1.5886, 3.5077,5.9171, cx,cy,s);
+            AddLine(tr, owner, -17.7859,-16.0688, -29.2973,-23.4076, cx,cy,s);
+            AddArc(tr, owner, -0.0000,0.0000, 37.5000, 1.6614,2.2628, cx,cy,s);
+            AddLine(tr, owner, 16.2080,-17.6591, 74.6291,-76.0802, cx,cy,s);
+            AddLine(tr, owner, -17.5389,-16.3381, -76.4654,-75.2646, cx,cy,s);
+            AddLine(tr, owner, -16.8588,17.0390, -75.6497,75.8299, cx,cy,s);
+            AddLine(tr, owner, 17.1785,16.7480, 75.4448,75.0142, cx,cy,s);
+            AddLine(tr, owner, 1.4833,-23.9237, 1.4833,-8.8654, cx,cy,s);
+            AddLine(tr, owner, -1.4833,-23.9237, -1.4833,-8.8654, cx,cy,s);
+            AddLine(tr, owner, 1.4833,8.8654, 1.4833,23.9237, cx,cy,s);
+            AddLine(tr, owner, -1.4833,8.8654, -1.4833,23.9237, cx,cy,s);
+            AddCircleBL(tr, owner, 0.0000,0.0000, 6.5626, cx,cy,s);
+            AddLine(tr, owner, -17.1483,16.7476, -28.7132,24.1205, cx,cy,s);
+            AddCircleBL(tr, owner, 0.0000,0.0000, 8.8654, cx,cy,s);
+            AddArc(tr, owner, -0.0000,0.0000, 37.5000, 2.4429,3.0411, cx,cy,s);
+            AddLine(tr, owner, -16.5650,17.3247, -23.9279,28.8739, cx,cy,s);
+            AddLine(tr, owner, -23.9695,0.0932, -37.3894,-2.8774, cx,cy,s);
+            AddLine(tr, owner, -23.9561,0.8070, -37.3107,3.7631, cx,cy,s);
+            AddLine(tr, owner, -17.2839,-16.6076, -24.6902,-28.2249, cx,cy,s);
+            AddCircleBL(tr, owner, 0.0000,0.0000, 6.5626, cx,cy,s);
         }
 
         private static void Track(List<ObjectId> created, ObjectId id)
@@ -411,6 +444,37 @@ namespace Spriro.P2
             ObjectId id = owner.AppendEntity(pl);
             tr.AddNewlyCreatedDBObject(pl, true);
             return id;
+        }
+
+        // ── Reference-block primitives: ByLayer, offset by (cx,cy), scaled by s.
+        // Default layer is PENDENT SPRINKLER; AddCircleBL takes an optional layer
+        // so the coverage circle can go on SPRINKLER COVERAGE.
+        private static void AddLine(Transaction tr, BlockTableRecord owner,
+            double x1, double y1, double x2, double y2, double cx, double cy, double s)
+        {
+            var e = new Line(new Point3d(cx + x1 * s, cy + y1 * s, 0),
+                             new Point3d(cx + x2 * s, cy + y2 * s, 0)) { Layer = PendentLayer };
+            owner.AppendEntity(e);
+            tr.AddNewlyCreatedDBObject(e, true);
+        }
+
+        private static void AddArc(Transaction tr, BlockTableRecord owner,
+            double ax, double ay, double r, double a1, double a2,
+            double cx, double cy, double s)
+        {
+            var e = new Arc(new Point3d(cx + ax * s, cy + ay * s, 0), r * s, a1, a2)
+            { Layer = PendentLayer };
+            owner.AppendEntity(e);
+            tr.AddNewlyCreatedDBObject(e, true);
+        }
+
+        private static void AddCircleBL(Transaction tr, BlockTableRecord owner,
+            double ax, double ay, double r, double cx, double cy, double s, string layer = null)
+        {
+            var e = new Circle(new Point3d(cx + ax * s, cy + ay * s, 0), Vector3d.ZAxis, r * s)
+            { Layer = layer ?? PendentLayer };
+            owner.AppendEntity(e);
+            tr.AddNewlyCreatedDBObject(e, true);
         }
 
     }

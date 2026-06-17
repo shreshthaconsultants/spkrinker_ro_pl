@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SprinklerPlugin")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bf89cf60276cf43f31c097f6b227117b647210fd")]
 [assembly: System.Reflection.AssemblyProductAttribute("SprinklerPlugin")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SprinklerPlugin")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

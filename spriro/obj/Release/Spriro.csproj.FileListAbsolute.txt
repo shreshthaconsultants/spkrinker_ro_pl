@@ -10,3 +10,8 @@ C:\Users\shres\Desktop\Sprinkler_full_code\spriro\obj\Release\Spriro.csproj.Up2D
 C:\Users\shres\Desktop\Sprinkler_full_code\spriro\obj\Release\Spriro.dll
 C:\Users\shres\Desktop\Sprinkler_full_code\spriro\obj\Release\Spriro.pdb
 C:\Users\shres\Desktop\Sprinkler_full_code\spriro\bin\Release\spriro.config.json
+C:\Users\shres\Desktop\Sprinkler_full_code\spriro\obj\Release\Spriro.sourcelink.json
+C:\Users\shres\Desktop\Sprinkler_full_code\spriro\bin\Staging\spriro.config.json
+C:\Users\shres\Desktop\Sprinkler_full_code\spriro\bin\Staging\Spriro.dll
+C:\Users\shres\Desktop\Sprinkler_full_code\spriro\bin\Staging\Spriro.pdb
+C:\Users\shres\Desktop\Sprinkler_full_code\spriro\bin\Staging\Newtonsoft.Json.dll
